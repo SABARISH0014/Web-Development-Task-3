@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Resource Center</title>
     <style>
-        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-image: url('beau-carpenter-pTaQDMpOZn0-unsplash.jpg'); /* Replace with your image URL */
+            background-image: url('beau-carpenter-pTaQDMpOZn0-unsplash.jpg');
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -17,7 +16,6 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
         header {
             text-align: center;
             padding: 50px 20px;
@@ -32,7 +30,6 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
-        /* Menu Button Styles */
         button#menuBtn {
             padding: 15px 30px;
             font-size: 1.5em;
@@ -49,7 +46,6 @@
             transform: scale(1.05);
         }
 
-        /* Navigation Styles */
         .nav {
             margin: 20px 0;
             padding: 10px;
@@ -64,7 +60,7 @@
 
         .nav li {
             display: inline-block;
-            margin: 0 50px; /* Increased margin for more space */
+            margin: 0 50px;
         }
 
         .nav li a {
@@ -78,7 +74,6 @@
             color: #ffd700;
         }
 
-        /* Dropdown Menu Styles */
         .dropdown {
             position: relative;
         }
@@ -87,8 +82,8 @@
             display: none;
             position: absolute;
             background-color: white;
-            min-width: 150px; /* Maintain this for width */
-            max-height: 270px; /* Limit the height */
+            min-width: 150px;
+            max-height: 270px;
             z-index: 1;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
@@ -100,7 +95,7 @@
 
         .dropdown-content a {
             display: block;
-            padding: 5px; /* Reduced padding for shorter items */
+            padding: 5px;
             color: #333;
             text-decoration: none;
         }
@@ -109,16 +104,14 @@
             background-color: #f1f1f1;
         }
 
-        /* Section Styles */
         .section {
             max-width: 800px;
             margin: auto;
             padding: 20px;
-            background: none; /* Remove white background */
+            background: none;
             border-radius: 10px;
         }
 
-        /* Form Container Styles */
         .form-container {
             max-width: 400px;
             margin: auto;
@@ -126,10 +119,9 @@
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: none; /* Hide forms initially */
+            display: none;
         }
 
-        /* Form Heading Styles */
         h2 {
             text-align: center;
             color: #000000;
@@ -137,14 +129,12 @@
             font-size: 40px;
         }
 
-        /* Paragraph Styles */
         p {
-            font-size: 30px; /* Adjust font size as needed */
-            line-height: 1.8; /* Improved line height for readability */
+            font-size: 30px;
+            line-height: 1.8;
             color: #ff8800;
         }
 
-        /* Input Field Styles */
         input[type="text"],
         input[type="email"],
         input[type="password"] {
@@ -156,7 +146,6 @@
             font-size: 1em;
         }
 
-        /* Submit Button Styles */
         button[type="submit"] {
             background-color: #d874c9;
             color: #ffffff;
@@ -172,14 +161,12 @@
             background-color: #c965b6;
         }
 
-        /* Error Message Styles */
         #loginError,
         #signupError {
             color: red;
             text-align: center;
         }
 
-        /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
             .nav li {
                 display: block;
@@ -282,23 +269,20 @@
     </div>
 
     <script>
-        // Toggle menu visibility
         document.getElementById("menuBtn").addEventListener("click", function () {
             const menu = document.getElementById("menu");
             menu.style.display = menu.style.display === "none" ? "block" : "none";
         });
 
-        // Show sections
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section, .form-container');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
-            document.getElementById("menu").style.display = 'none'; // Hide menu after selection
+            document.getElementById("menu").style.display = 'none';
         }
 
-        // Navigation Links
         document.getElementById("homeLink").addEventListener("click", () => showSection('homeSection'));
         document.getElementById("coursesLink").addEventListener("click", () => showSection('coursesSection'));
         document.getElementById("aboutLink").addEventListener("click", () => showSection('aboutSection'));
@@ -306,7 +290,6 @@
         document.getElementById("loginLink").addEventListener("click", () => showSection('loginSection'));
         document.getElementById("signupLink").addEventListener("click", () => showSection('signupSection'));
 
-        // Form Submission Handlers
         document.getElementById("loginForm").addEventListener("submit", function (event) {
             event.preventDefault();
             handleLogin();
@@ -317,48 +300,42 @@
             handleSignup();
         });
 
-        // Handle Login
         function handleLogin() {
             const email = sanitizeInput(document.getElementById("loginEmail").value);
             const password = sanitizeInput(document.getElementById("loginPassword").value);
             const loginError = document.getElementById("loginError");
 
-            // Validate input
             if (!validateEmail(email) || !password) {
                 loginError.textContent = "Please enter a valid email and password.";
                 return;
             }
 
-            alert(`Logged in as: ${email}`); // Simulate successful login
+            alert(`Logged in as: ${email}`);
         }
 
-        // Handle Sign-Up
         function handleSignup() {
             const username = sanitizeInput(document.getElementById("signupUsername").value);
             const email = sanitizeInput(document.getElementById("signupEmail").value);
             const password = sanitizeInput(document.getElementById("signupPassword").value);
             const signupError = document.getElementById("signupError");
 
-            // Validate input
             if (!username || !validateEmail(email) || !password) {
                 signupError.textContent = "All fields are required!";
                 return;
             }
 
-            alert(`Signed up with: ${username} (${email})`); // Simulate successful signup
+            alert(`Signed up with: ${username} (${email})`);
         }
 
-        // Email Validation Function
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
-        // Input Sanitization Function
         function sanitizeInput(input) {
             const div = document.createElement('div');
-            div.innerText = input; // Automatically escapes HTML
-            return div.innerHTML; // Returns sanitized input
+            div.innerText = input;
+            return div.innerHTML;
         }
     </script>
 </body>
